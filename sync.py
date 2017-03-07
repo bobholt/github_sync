@@ -222,7 +222,7 @@ def post_issue_comment(issue_number):
     issues_url = "https://api.github.com/repos/%s/%s/issues/" % (config["org_name"], config["repo_name"])
     issue_comments_url = urljoin(issues_url, "%s/comments" % issue_number)
     issue_comments = requests.get(issue_comments_url, auth=auth).json()
-    data = json.dumps({u"body": u"These tests are now available on [w3c-test.org](https://w3c-test.org/submissions/%s)" % issue_number})
+    data = json.dumps({u"body": u"These tests are now available on [w3c-test.org](https://w3c-test.org/submissions/%s/)" % issue_number})
 
     for comment in issue_comments:
         if comment["user"]["login"] == user_name and "These tests are now available" in comment["body"]:
